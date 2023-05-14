@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+}
+  .background-image {
+    background: linear-gradient(#1a202c, #2d3748);    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  
+  .content {
+    color: #ffffff;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  button {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    color: #000000;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+  }
+  
