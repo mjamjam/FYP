@@ -1,0 +1,46 @@
+.card {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    border: 1px red solid;
+    align-content: center;
+    margin: 0 auto;
+  }
+  
+  .card-header {
+    height: 30%;
+    background: #1a202c;
+    color: white;
+    text-align: center;
+  }
+  
+  .card-header p {
+    font-size: 20px;
+  }
+  .container {
+    padding: 4px 16px;
+  }
+  .bttn{
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 4px 5px;
+    cursor: pointer;
+  }
+  .btn-visualize{
+    background-color: #f44336;
+    padding: 20px;
+    margin: 20px;
+  }
+  .btn-inf{
+    background-color: #ffd900;
+    padding: 20px;
+    color: black;
+    margin: 20px;
+  }
+  
