@@ -6,12 +6,11 @@ import queryString from 'query-string';
 import Dropzone from 'react-dropzone';
 import Controls from './components/Controls';
 import EDFView from './components/EDF-View';
-import RTCConnection from './components/RTCConnection';
 import EdfInfoBox from './components/EdfInfoBox';
 import EDF from './utils/EDF';
 import WebRTCResource from './utils/WebRTCResource';
 import Pseudonyms from './utils/Pseudonyms';
-
+import TextFileUploader from './components/TextFileUploader';
 export default class App extends Component {
   dateWindow = null;
 
@@ -96,16 +95,14 @@ export default class App extends Component {
 
   downloadPseudonyms = async () => {
     const XLSX = await import('xlsx');
-    const header = ['Patient', 'Pseudonym', 'Date'];
+    const header = ['Patient', 'Date'];
     const pseudonyms = _.map(
       this.pseudonyms.getAll(),
-      ({ patient, pseudonym, files }) => [patient, pseudonym, files.join(', ')],
+      ({ patient, files }) => [patient, files.join(', ')],
     );
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.aoa_to_sheet([header, ...pseudonyms]);
-    // const sheetName = 'Pseudonyme';
-    // XLSX.utils.book_append_sheet(wb, ws, sheetName);
-    // XLSX.writeFile(wb, 'pseudonyms.xlsx', { compression: true });
+
   };
 
   emitMessage = (type, data) => {
@@ -117,9 +114,7 @@ export default class App extends Component {
       this.emitMessage('l-dateWindow', currState.dateWindow);
       this.dateWindow = currState.dateWindow;
     }
-    // if (prevState.frequency !== currState.frequency) {
-    //   this.emitMessage('l-frequency', currState.frequency);
-    // }
+
   };
 
   renderContent() {
@@ -127,12 +122,16 @@ export default class App extends Component {
 
     if (edf) {
       return (
+        <div>
+          
+          <TextFileUploader/>
         <EDFView
           key={edf.file.name}
           edf={edf}
           dateWindow={this.dateWindow}
           emitter={emitter}
         />
+        </div>
       );
     }
 
@@ -164,7 +163,7 @@ export default class App extends Component {
     return (
       <div className="wrapper">
         <header>
-          <span className="title">EDF Visualizer</span>
+          <h1 className="title">EDF Visualizer</h1>
           {edf && (
             <nav>
               <Controls emitter={emitter} />

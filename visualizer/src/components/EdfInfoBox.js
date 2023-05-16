@@ -72,27 +72,7 @@ const EdfInfoBox = ({ edf, pseudonyms, onClose }) => (
       </section>
     )}
 
-    <h2>Pseudonyms</h2>
-    {_.map(pseudonyms, ({ patient, pseudonym, files }) => (
-      <table key={pseudonym} className="pseudonyms fixed">
-        <thead>
-          <tr>
-            <th>{patient}</th>
-            <th>➡</th>
-            <th>{pseudonym}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {files.map(file => (
-            <tr key={file.date}>
-              <td>{file.date}</td>
-              <td>{file.filename}</td>
-              <td>{formatSize(file.size)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    ))}
+
   </div>
 );
 
